@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f -t itzharis/docker-react:dev dockerfile.dev .
+
+script:
+  - docker run -e CI=true itzharis/docker-react:dev npm run test
